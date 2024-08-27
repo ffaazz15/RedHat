@@ -7,10 +7,10 @@ def driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--incognito")
     driver = webdriver.Chrome(options=options)
-    # Navigate to Google Finance
+    options.add_argument("--headless")
     driver.get("https://www.google.com/finance")
     driver.maximize_window()
 
-    yield driver  # Return the driver instance to the test function
-    # Quit the browser after the tests are done
+    yield driver
+
     driver.quit()
