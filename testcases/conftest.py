@@ -6,11 +6,12 @@ from selenium import webdriver
 def driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--incognito")
-    driver = webdriver.Chrome(options=options)
-    options.add_argument("--headless")
+    options.add_argument("--headless")  # This should be added before creating the driver
+
+    driver = webdriver.Chrome(options=options)  # Initialize driver after setting options
     driver.get("https://www.google.com/finance")
     driver.maximize_window()
 
-    yield driver
+    yield driver  # Provide the driver instance to the tests
 
-    driver.quit()
+    driver.quit()  # Quit the driver after the tests are done
